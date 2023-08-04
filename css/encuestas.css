@@ -1,0 +1,17 @@
+/* responsive */
+.grafica
+    {
+        width: 50%;
+    }
+@media only screen and (min-width: 481px) and (max-width: 991px)  {
+    .grafica
+    {
+        width: 80%;
+    }
+}
+@media only screen and (min-width: 300px) and (max-width: 480px)  {
+    .grafica
+    {
+        width: 80%
+    }
+}
