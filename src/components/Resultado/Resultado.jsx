@@ -27,7 +27,6 @@ function Resultado() {
                 },
                 credentials: "include"
             };
-            debugger;
             try {
                 const res = await fetch(URLAPI + "/resultados/" + idSurvey, options)
                 const json = await res.json();
