@@ -12,7 +12,7 @@ function Header() {
             </div>
 
             <div className="user">
-                <img src="/swpit/imgs/login-icon.png" alt="" />
+                <img src="/imgs/login-icon.png" alt="" />
             </div>
         </div>
     )

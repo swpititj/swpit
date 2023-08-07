@@ -19,7 +19,7 @@ function Navbar() {
             <ul>
                 <li>
                     <NavLink to={"/"}>
-                        <span className="banner-img"> <img src="/swpit/imgs/halcon.png" alt="" /> </span>
+                        <span className="banner-img"> <img src="/imgs/halcon.png" alt="" /> </span>
                     </NavLink>
                 </li>
                 {routes.map(route => {
