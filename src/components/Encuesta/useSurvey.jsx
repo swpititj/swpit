@@ -1,5 +1,5 @@
 
-const onSubmit = async (e, startDate, csrf, idSurvey) => {
+const onSubmit = async (e, startDate, token, idSurvey) => {
 
     e.preventDefault()
 
@@ -29,10 +29,9 @@ const onSubmit = async (e, startDate, csrf, idSurvey) => {
     const options = {
         method: "POST",
         headers: {
-            XCSRFTOKEN: csrf,
+            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(body),
-        credentials: 'include',
     };
 
         const response = await fetch(URLAPI + "/resultados/" + idSurvey, options)

@@ -19,7 +19,7 @@ function EstudianteResultados() {
 
     const { idStudent } = useParams()
     const navigate = useNavigate()
-    const { URLAPI } = useAuth()
+    const { URLAPI, user } = useAuth()
 
     useEffect(() => {
         const fetchSurveys = async () => {
@@ -27,8 +27,8 @@ function EstudianteResultados() {
                 method: "GET",
                 headers: {
                     Accept: "*/*",
+                    Authorization: `Bearer ${user.token}`
                 },
-                credentials: "include"
             };
             const res = await fetch(URLAPI + "/encuestas/", options);
             const json = await res.json();
@@ -39,8 +39,8 @@ function EstudianteResultados() {
                 method: "GET",
                 headers: {
                     Accept: "*/*",
+                    Authorization: `Bearer ${user.token}`
                 },
-                credentials: "include"
             };
             const res = await fetch(URLAPI + "/estudiantes/" + idStudent, options);
             const json = await res.json();
@@ -93,9 +93,9 @@ function EstudianteResultados() {
                             }
                         </div>
                     </Tab>
-                    <Tab eventKey="" title="Entrevista" disabled>
+                    {/* <Tab eventKey="" title="Entrevista" disabled>
                         Tab content for Loooonger Tab
-                    </Tab>
+                    </Tab> */}
                 </Tabs>
 
             </Container>

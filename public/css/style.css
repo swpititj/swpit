@@ -61,7 +61,8 @@
   
   .nav-menu-link:hover,
   .nav-menu-link_active {
-    background-color: #034574;
+    background-color: white;
+    color: #173968;
     transition: 0.5s;
   }
   .bgcolor{

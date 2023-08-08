@@ -23,8 +23,8 @@ function Estudiantes() {
                 method: "GET",
                 headers: {
                     Accept: "*/*",
+                    Authorization: `Bearer ${user.token}`
                 },
-                credentials: "include"
             };
 
             const res = await fetch(URLAPI + "/estudiantes", options)

@@ -16,7 +16,7 @@ function Resultado() {
     const [error, setError] = useState()
 
     const { nameSurvey, idSurvey } = useParams()
-    const { URLAPI } = useAuth()
+    const { URLAPI, user } = useAuth()
 
     useEffect(() => {
         const fetchSurveys = async () => {
@@ -24,8 +24,8 @@ function Resultado() {
                 method: "GET",
                 headers: {
                     Accept: "*/*",
+                    Authorization: `Bearer ${user.token}`
                 },
-                credentials: "include"
             };
             try {
                 const res = await fetch(URLAPI + "/resultados/" + idSurvey, options)

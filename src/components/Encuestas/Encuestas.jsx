@@ -10,7 +10,7 @@ import { IoIosBody } from 'react-icons/io';
 
 function Encuestas() {
     const [surveys, setSurveys] = useState(null)
-    const { URLAPI } = useAuth()
+    const { URLAPI, user } = useAuth()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -19,6 +19,7 @@ function Encuestas() {
                 method: "GET",
                 headers: {
                     Accept: "*/*",
+                    Authorization: `Bearer ${user.token}`
                 },
             };
             const res = await fetch(URLAPI + "/encuestas/", options);

@@ -12,7 +12,7 @@ function ModalResultados({ show, setShow, dataSurvey }) {
 
     const [error, setError] = useState()
 
-    const { URLAPI } = useAuth()
+    const { URLAPI, user } = useAuth()
 
     useEffect(() => {
         const fetchSurveys = async () => {
@@ -20,8 +20,8 @@ function ModalResultados({ show, setShow, dataSurvey }) {
                 method: "GET",
                 headers: {
                     Accept: "*/*",
+                    Authorization: `Bearer ${user.token}`
                 },
-                credentials: "include"
             };
 
             try {

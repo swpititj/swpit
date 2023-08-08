@@ -22,14 +22,15 @@ function Login() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        const isCheck = async (to) => {
-            setIsLoading(true)
-            const [data, error] = await check()
+        const isCheck = async (to, token) => {
 
+            setIsLoading(true)
+            const [data, error] = await check(token)
             setIsLoading(false)
 
             if (data &&!error) {
                 setUser(data)
+                localStorage.setItem('token', data.token)
                 navigate(to || '/home')
             }
             
@@ -38,11 +39,10 @@ function Login() {
             }
         }
         
-        if (user === null) {
-            isCheck(state?.to)
-        } else {
-            navigate(state?.to || '/home')
-        }
+        if(user) navigate(state?.to || '/home')
+        
+        const token = localStorage.getItem('token')
+        if(token) isCheck(state?.to, token)
 
     }, [])
 
@@ -65,6 +65,7 @@ function Login() {
                             const [data, error] = await login(username, password, typeUser)
                             if(data && !error){
                                 setUser(data)
+                                localStorage.setItem('token', data.token)
                                 navigate(state?.to || '/home')
                             }else{
                                 alert(error)

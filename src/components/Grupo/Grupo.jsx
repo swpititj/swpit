@@ -15,7 +15,7 @@ function Grupo() {
     const navigate = useNavigate()
     const { idGroup } = useParams()
 
-    const { URLAPI } = useAuth()
+    const { URLAPI, user} = useAuth()
 
     useEffect(() => {
         const fetchStudents = async () => {
@@ -26,8 +26,8 @@ function Grupo() {
                 method: "GET",
                 headers: {
                     Accept: "*/*",
+                    Authorization: `Bearer ${user.token}`
                 },
-                credentials: "include"
             };
 
             const res = await fetch(URLAPI + "/grupos/"+idGroup, options)

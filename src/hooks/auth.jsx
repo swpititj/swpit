@@ -7,6 +7,9 @@ const useAuth = () => useContext(AuthContext)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const URLAPI = 'https://swpit-api-f7az4aatqq-uc.a.run.app'
+    //const URLAPI = 'http://127.0.0.1:5050'
+    //const URLAPI = 'http://192.168.1.18:5050'
 
     const login = async (username, password, typeUser = 'student') => {
 
@@ -18,7 +21,6 @@ const AuthProvider = ({ children }) => {
         const options = {
             method: "POST",
             body: formData,
-            credentials: "include",
         };
 
         // [data, error]
@@ -32,8 +34,17 @@ const AuthProvider = ({ children }) => {
 
     }
 
-    const check = async () => {
-        const response = await fetch(URLAPI + '/auth/check', { method: 'GET', credentials: "include" }).catch(error => [null, error])
+    const check = async (token) => {
+
+        const option = { 
+            method: 'GET',
+            headers: {}
+        }
+
+        debugger;
+        if(token) option.headers.Authorization = `Bearer ${token}`
+
+        const response = await fetch(URLAPI + '/auth/check', option).catch(error => [null, error])
         if (!response.ok)
             return [null, null]
         const data = await response.json();
@@ -42,14 +53,10 @@ const AuthProvider = ({ children }) => {
     }
 
     const logout = async () => {
-        const response = await fetch(URLAPI + '/auth/logout', { method: 'POST', credentials: 'include' }).catch(error => [false, error])
+        const response = await fetch(URLAPI + '/auth/logout', { method: 'POST' }).catch(error => [false, error])
         if (!response.ok) return [false, 'error']
         return [true, null]
     }
-
-    const URLAPI = 'https://swpit-api-f7az4aatqq-uc.a.run.app'
-    //const URLAPI = 'http://127.0.0.1:5050'
-    //const URLAPI = 'http://192.168.1.18:5050'
 
     const auth = { user, login, logout, check, isLoading, URLAPI, setUser, setIsLoading }
 

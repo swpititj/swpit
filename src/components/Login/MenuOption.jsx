@@ -2,6 +2,8 @@ function MenuOption({label, typeUser, setTypeUser}) {
 
     const onClick = (event)=>{
         event.preventDefault()
+        document.querySelector(".nav-menu").classList.toggle("nav-menu_visible");
+        document.querySelector(".nav-toggle").setAttribute("aria-label", "Cerrar menú");
         setTypeUser(label)
     }
 

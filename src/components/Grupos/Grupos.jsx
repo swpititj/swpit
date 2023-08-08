@@ -10,7 +10,7 @@ import { IoIosBody } from 'react-icons/io';
 
 function Grupos() {
     const [groups, setGroups] = useState(null)
-    const { URLAPI } = useAuth()
+    const { URLAPI, user } = useAuth()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -19,10 +19,11 @@ function Grupos() {
                 method: "GET",
                 headers: {
                     Accept: "*/*",
+                    Authorization: `Bearer ${user.token}`
                 },
-                credentials: "include"
             };
-            const res = await fetch(URLAPI + "/grupos", options);
+            debugger
+            const res = await fetch(URLAPI + "/grupos/", options);
             const json = await res.json();
             setGroups(json);
         }

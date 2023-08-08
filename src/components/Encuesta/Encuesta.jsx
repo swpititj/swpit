@@ -31,6 +31,7 @@ function Encuesta() {
                 method: "GET",
                 headers: {
                     Accept: "*/*",
+                    Authorization: `Bearer ${user.token}`
                 },
                 credentials: "include"
             };
@@ -54,7 +55,7 @@ function Encuesta() {
                         <>
                             <Title name={survey.Nombre} />
                             <form onSubmit={async(e)=>{
-                                const res = await onSubmit(e, startDate, csrf, idSurvey, URLAPI)
+                                const res = await onSubmit(e, startDate, user.token, idSurvey, URLAPI)
                                 if(res) navigate(-1)
                             }}>
                                 {sections.map((section, i) => (
