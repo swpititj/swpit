@@ -1,4 +1,4 @@
-import { IoIosHome, IoIosList, IoIosPerson } from 'react-icons/io';
+import { IoIosHome, IoIosInformationCircle, IoIosList, IoIosPerson } from 'react-icons/io';
 import { IoPeople } from 'react-icons/io5';
 
 const routes = []
@@ -6,12 +6,13 @@ const routes = []
 //UserTypes:
 // alumno
 // docente
+// root
 
 routes.push({
     to: '/home',
     text: 'Inicio',
     icon: <IoIosHome />, 
-    userType: ['alumno', 'docente']
+    userType: ['alumno', 'docente', 'root']
     // onClick: onClick
 })
 
@@ -23,14 +24,6 @@ routes.push({
     // onClick: onClick
 })
 
-// routes.push({
-//     to: '/datos',
-//     text: 'Datos Personales',
-//     icon: <IoIosPerson />,
-//     userType: ['alumnos']
-//     // onClick: onClick
-// })
-
 routes.push({
     to: '/grupos',
     text: 'Grupos',
@@ -38,12 +31,13 @@ routes.push({
     userType: ['docente']
     // onClick: onClick
 })
+routes.push({
+    to: '/informacion',
+    text: 'Informacion',
+    icon: <IoIosInformationCircle />,
+    userType: ['alumno', 'docente']
+    // onClick: onClick
+})
 
-// routes.push({
-//     to: '/',
-//     text: 'Cerrar Sesion',
-//     icon: <IoIosLogOut />,
-//     onClick: onClick
-// })
 
 export default routes

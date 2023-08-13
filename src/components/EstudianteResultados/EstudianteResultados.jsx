@@ -67,7 +67,7 @@ function EstudianteResultados() {
                             <br />
                             <p className="fs-5"><b>Nacimiento:</b> {student.Nacimiento}</p>
                             <br />
-                            <p className="fs-5"><b>Sexo:</b> {student.Sexo}</p>
+                            <p className="fs-5"><b>Sexo:</b> {student.Sexo === 'H' ? 'Hombre' : student.Sexo === 'I'? 'Indefinido' : 'Mujer'}</p>
                             <br />
                             <p className="fs-5"><b>RFC:</b> {student.RFC}</p>
                         </div>

@@ -22,7 +22,7 @@ function Grupos() {
                     Authorization: `Bearer ${user.token}`
                 },
             };
-            debugger
+            //debugger
             const res = await fetch(URLAPI + "/grupos/", options);
             const json = await res.json();
             setGroups(json);

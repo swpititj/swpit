@@ -10,8 +10,14 @@ import { Estudiantes } from "./components/Estudiantes/Estudiantes"
 import { EstudianteResultados } from "./components/EstudianteResultados/EstudianteResultados"
 import { Grupos } from "./components/Grupos/Grupos"
 import { Grupo } from "./components/Grupo/Grupo"
+import { Informacion } from "./components/Informacion/Informacion"
 
 function App() {
+
+  //UserTypes:
+  // alumno
+  // docente
+  // root
 
   const pages = [
     { 
@@ -28,7 +34,7 @@ function App() {
       path: '/home', 
       componet: <Home />, 
       isPublic: false,
-      roles: ['alumno', 'docente']
+      roles: ['alumno', 'docente', 'root']
     },
     { 
       path: '/encuestas', 
@@ -47,6 +53,12 @@ function App() {
       componet: <Resultado />, 
       isPublic: false,
       roles: ['alumno']
+    },
+    { 
+      path: '/informacion', 
+      componet: <Informacion />, 
+      isPublic: false,
+      roles: ['alumno', 'docente']
     },
     { 
       path: '/estudiantes', 
