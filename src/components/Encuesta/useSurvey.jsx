@@ -1,5 +1,5 @@
 
-const onSubmit = async (e, startDate, token, idSurvey) => {
+const onSubmit = async (e, startDate, token, idSurvey, URLAPI) => {
 
     e.preventDefault()
 
@@ -35,11 +35,11 @@ const onSubmit = async (e, startDate, token, idSurvey) => {
     };
 
         const response = await fetch(URLAPI + "/resultados/" + idSurvey, options)
-        if(response.ok){
-            const data = await response.text()
-            return true
+        const data = await response.json()
+        if(!response.ok){
+            return [null, data]
         }
-        return false
+        return [data, null]
 }
 
 export { onSubmit }

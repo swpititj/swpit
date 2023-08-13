@@ -12,11 +12,13 @@ import { Option } from "./Option";
 import { onSubmit } from "./useSurvey";
 import { SubmitSurvey } from "./SubmitSurvey";
 import { BackButton } from "./BackButton";
+import { Alert } from "react-bootstrap";
 
 
 function Encuesta() {
     const [survey, setSurvey] = useState([])
     const [sections, setSections] = useState([])
+    const [error, setError] = useState()
 
     const { URLAPI, user } = useAuth()
     const { idSurvey } = useParams()
@@ -37,8 +39,12 @@ function Encuesta() {
             };
             const res = await fetch(URLAPI + "/encuestas/" + idSurvey, options);
             const json = await res.json();
-            setSections(json.Secciones)
-            setSurvey(json);
+            if(!res.ok){
+                setError(json.memessagess)
+            }else{
+                setSections(json.Secciones)
+                setSurvey(json);
+            }
         }
 
         fetchSurveys()
@@ -49,14 +55,23 @@ function Encuesta() {
             <Container>
                 <Header />
                 <div className="center">
+                    {error && 
+                        <div className="container">
+                            <Alert key='danger' variant='danger'>
+                                {error}
+                            </Alert>
+                        </div>
+                    }
                     {survey === null ?
                         <p>...waiting</p>
                         :
                         <>
                             <Title name={survey.Nombre} />
                             <form onSubmit={async(e)=>{
-                                const res = await onSubmit(e, startDate, user.token, idSurvey, URLAPI)
+                                setError()
+                                const [res, err] = await onSubmit(e, startDate, user.token, idSurvey, URLAPI)
                                 if(res) navigate(-1)
+                                else setError(err.message)
                             }}>
                                 {sections.map((section, i) => (
                                     <Section section={section} key={i}>
