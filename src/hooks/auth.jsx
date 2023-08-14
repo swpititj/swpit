@@ -7,9 +7,10 @@ const useAuth = () => useContext(AuthContext)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+
+    //CAMBIAR LA URL PARA DESPLIEGUE
     const URLAPI = 'https://swpit-api-f7az4aatqq-uc.a.run.app'
     //const URLAPI = 'http://127.0.0.1:5050'
-    //const URLAPI = 'http://192.168.1.18:5050'
 
     const login = async (username, password, typeUser = 'student') => {
 
@@ -36,13 +37,13 @@ const AuthProvider = ({ children }) => {
 
     const check = async (token) => {
 
-        const option = { 
+        const option = {
             method: 'GET',
             headers: {}
         }
 
         //debugger;
-        if(token) option.headers.Authorization = `Bearer ${token}`
+        if (token) option.headers.Authorization = `Bearer ${token}`
 
         const response = await fetch(URLAPI + '/auth/check', option).catch(error => [null, error])
         const data = await response.json();

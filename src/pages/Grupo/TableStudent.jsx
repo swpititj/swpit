@@ -1,7 +1,7 @@
-import { Navbar } from "../Navbar/Navbar"
-import { Header } from "../Header/Header"
+import { Navbar } from "./../../components/Navbar/Navbar"
+import { Header } from "./../../components/Header/Header"
 import '/public/css/style_form.css'
-import { Container } from "../Container/Container";
+import { Container } from "./../../components/Container/Container";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate, useParams } from "react-router-dom";

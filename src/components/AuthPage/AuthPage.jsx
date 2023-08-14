@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useAuth } from "./auth"
+import { useAuth } from "../../hooks/auth"
 import { Navigate, useLocation, useNavigate } from "react-router-dom"
 
 function AuthPage({children, roles}){

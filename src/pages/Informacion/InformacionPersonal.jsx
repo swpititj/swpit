@@ -1,6 +1,6 @@
-import { Container } from "../Container/Container"
-import { Header } from "../Header/Header"
-import { Navbar } from "../Navbar/Navbar"
+import { Container } from "./../../components/Container/Container"
+import { Header } from "./../../components/Header/Header"
+import { Navbar } from "./../../components/Navbar/Navbar"
 import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';

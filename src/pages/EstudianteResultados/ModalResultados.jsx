@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useAuth } from '../../hooks/auth';
-import { Result } from '../Resultado/Result';
+import { Result } from '../../pages/Resultado/Result';
 
 function ModalResultados({ show, setShow, dataSurvey }) {
 
