@@ -79,6 +79,9 @@ function ModalReports({ show, setShow, dataSurvey, studentsLength}) {
                                                 'rgba(75, 192, 192, 0.2)',
                                                 'rgba(153, 102, 255, 0.2)',
                                                 'rgba(255, 159, 64, 0.2)',
+                                                'rgba(5, 200, 99, 0.2)',
+                                                'rgba(230, 200, 70, 0.2)',
+                                                'rgba(200, 50, 200, 0.2)',
                                             ],
                                             borderColor: [
                                                 'rgba(255, 99, 132, 1)',
@@ -87,6 +90,9 @@ function ModalReports({ show, setShow, dataSurvey, studentsLength}) {
                                                 'rgba(75, 192, 192, 1)',
                                                 'rgba(153, 102, 255, 1)',
                                                 'rgba(255, 159, 64, 1)',
+                                                'rgba(5, 200, 99, 1)',
+                                                'rgba(230, 200, 70, 1)',
+                                                'rgba(200, 50, 200, 1)',
                                             ],
                                             borderWidth: 1
                                         }
