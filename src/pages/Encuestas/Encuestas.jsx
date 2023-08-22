@@ -43,7 +43,7 @@ function Encuestas() {
                                     <div className="numbers">{survey.idEncuesta}</div>
                                     <div className="cardName">{survey.Nombre}</div>
                                 </div>
-                                <NavLink to={"/resultados/" + survey.Nombre + "/" + survey.idEncuesta} className="text-secondary">Resultado</NavLink>
+                                <NavLink to={"/resultados/" + survey.Nombre + "/" + survey.idEncuesta} className="text-dark">Resultado</NavLink>
                                 {/* <div className="iconBx"><IoIosBody/></div> */}
                             </div>
                         ))

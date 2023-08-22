@@ -29,13 +29,13 @@ function ModalReports({ show, setShow, dataSurvey, studentsLength}) {
 
             const res = await fetch(URLAPI + "/grupos/"+dataSurvey.idGroup+"/reporte/"+dataSurvey.idEncuesta, options)
             const json = await res.json();
+
             setLabels(Object.keys(json))
             setData(Object.values(json))
 
         }
         if (dataSurvey) {
             fetchSurveys()
-            console.log(studentsLength)
         }
     }, [dataSurvey])
 
@@ -60,7 +60,7 @@ function ModalReports({ show, setShow, dataSurvey, studentsLength}) {
                                 :
                                 <>
                                     <p><b>Cantidad Estudiantes:</b> {studentsLength}</p>
-                                    <p><b>Encuestas Realizadas:</b> {data.reduce((p,c)=>p+c)}</p>
+                                    <p><b>Encuestas Realizadas:</b> {data?.reduce((p,c)=>p+c, 0)}</p>
                                     {
                                         labels.map((label,i)=>(
                                             <p><b>{label}:</b> {data[i]}</p>

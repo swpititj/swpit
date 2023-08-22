@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function ModalExit({ show, setShow,}) {
 
     const [error, setError] = useState()
-    const { logout, setUser, user, URLAPI } = useAuth()
+    const { logout, setUser } = useAuth()
     const navigate = useNavigate()
 
     const onClickLogout = async () => {

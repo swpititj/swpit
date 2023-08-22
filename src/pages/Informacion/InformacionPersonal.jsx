@@ -33,7 +33,7 @@ function InformacionPersonal({URLAPI, user, setError, setOk}) {
             body: JSON.stringify(obj)
         }
 
-        const response = await fetch(URLAPI+"/personal/", options).catch(console.log)
+        const response = await fetch(URLAPI+"/personal/", options)
         const json = await response.json()
         if(!response.ok)
             setError(json.message)
@@ -59,8 +59,6 @@ function InformacionPersonal({URLAPI, user, setError, setOk}) {
             }
         }
         fetchData()
-        console.log(data)
-
     }, [])
 
     return (

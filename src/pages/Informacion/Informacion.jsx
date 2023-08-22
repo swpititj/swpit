@@ -11,12 +11,13 @@ import { useAuth } from "../../hooks/auth";
 import { Alert } from "react-bootstrap";
 import { InformacionAlumno } from "./InformacionAlumno";
 import { InformacionPersonal } from "./InformacionPersonal";
+import { useNavigate } from "react-router-dom";
 
 function Informacion() {
     const { URLAPI, user, setUser } = useAuth()
-    const [data, setData] = useState();
     const [error, setError] = useState();
     const [ok, setOk] = useState(false);
+    const navigate = useNavigate()
 
     const handleSubmitAccess = async (event) => {
         setError(false)
@@ -41,10 +42,9 @@ function Informacion() {
         if (!response.ok)
             setError(json.message)
         else {
-            obj.mail = obj.Correo
-            obj.username = obj.Nombre
-            setUser(obj)
-            setOk(true)
+            setUser(null)
+            localStorage.clear()
+            navigate('/', { state: { isLogout: true } })
         }
     };
 

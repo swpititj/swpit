@@ -33,7 +33,7 @@ function InformacionAlumno({URLAPI, user, setError, setOk}) {
             body: JSON.stringify(obj)
         }
 
-        const response = await fetch(URLAPI+"/estudiantes/", options).catch(console.log)
+        const response = await fetch(URLAPI+"/estudiantes/", options)
         const json = await response.json()
         if(!response.ok)
             setError(json.message)
@@ -66,6 +66,8 @@ function InformacionAlumno({URLAPI, user, setError, setOk}) {
                 {data && 
                     <Form onSubmit={handleSubmitInfo}>
                         <h3>Informacion Personal</h3>
+                        <p><b>Carrera: </b>{user?.career}</p>
+                        <p><b>Generacion: </b>{user?.generation}</p>
                         <Row className="mb-3">
                             <Form.Group as={Col} md="4" controlId="NumeroControl">
                                     <Form.Label>Numero Control</Form.Label>
